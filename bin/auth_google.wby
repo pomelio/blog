@@ -1,0 +1,12 @@
+import ext.google as google;
+import ext.web as web;
+
+let scopes = [
+      'https://www.googleapis.com/auth/userinfo.profile'
+];
+
+let {redirect} = web.query();
+
+let url = google.authorize_url(scopes, {}, {redirect});
+
+web.body({url});

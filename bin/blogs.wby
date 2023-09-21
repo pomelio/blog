@@ -1,0 +1,48 @@
+import ext.github as github;
+import std.string as string;
+import ext.web as web;
+import std.array array;
+import ext.mustache as mch;
+
+let articles_data = github.get_content('/docs/articles/blogs.txt');
+let articles = string.split(articles_data, '\n');
+
+let {page} = web.query();
+
+let PAGE_COUNT = 20;
+
+if !page {
+    page = 0;
+}
+
+let articles_count = len(articles);
+let offset = page * PAGE_COUNT;
+
+let end = offset + PAGE_COUNT;
+
+if end > articles_count {
+    end = articles_count;
+}
+
+articles = array.slice(articles, offset, end);
+
+let tmpCard = mch.init('/docs/article_card.mustache');
+
+let cards = [];
+
+for (let i = 0; i < len(articles); i++) {
+  let article = articles[i];
+
+  let md_result = md.render('/docs/articles/' + article);
+  let metas = md.get_metas(md_result);
+
+  let card_html = mch.render(tmpCard);
+  array.push(cards, card_html);
+}
+
+let articles = array.join(cards, '');
+
+let html = mch.renderTemplate('/data/blogs.mustache');
+
+web.body(html);
+
