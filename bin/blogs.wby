@@ -16,6 +16,8 @@ if !page {
     page = 0;
 }
 
+let HOST_NAME = web.hostname();
+
 let articles_count = len(articles);
 let offset = page * PAGE_COUNT;
 
