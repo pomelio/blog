@@ -10,7 +10,7 @@ let match_result = web.match('/comment/:id');
 
 if web.match('/blog/:id') {
   dispatch('/blog', {});
-if ppath == '/blogs' {
+} elsif ppath == '/blogs' {
   dispatch('/blogs', {});
 } elsif ppath == '/login' {
   dispatch('/login', {});
