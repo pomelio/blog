@@ -1,7 +1,7 @@
 import ext.github as github;
 import std.string as string;
 import ext.web as web;
-import std.array array;
+import std.array as array;
 import ext.mustache as mch;
 
 let articles_data = github.get_content('/docs/articles/blogs.txt');
