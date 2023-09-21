@@ -43,7 +43,7 @@ for (let i = 0; i < len(articles); i++) {
 
 let articles = array.join(cards, '');
 
-let html = mch.renderTemplate('/data/blogs.mustache');
+let html = mch.renderTemplate('/docs/blogs.mustache');
 
 web.body(html);
 
