@@ -46,7 +46,7 @@ for (let i = 0; i < len(articles); i++) {
   let player_url = null;
   let image_url = null;
   let video = metas['video'];
-  let image = metas['image];
+  let image = metas['image'];
   let title = metas['title'];
   let description = metas['description'];
 
