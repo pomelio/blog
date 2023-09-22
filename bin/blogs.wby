@@ -62,7 +62,7 @@ for (let i = 0; i < len(articles); i++) {
     is_summary_card = false;
     is_summary_image_card = true;
     
-    image_url = imge.src;
+    image_url = image['src'];
   } else {
     is_player_card = false;
     is_summary_card = true;
