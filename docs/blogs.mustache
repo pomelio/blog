@@ -5,71 +5,9 @@
     <meta charset="utf-8">
 	
 
-	{{#title}}
-	  <title>{{title}}</title>
-	  <meta name="og:title" content="{{title}}">
-	  <meta name="twitter:title" content="{{title}}">
-	{{/title}}
-
-	{{#description}}
-	  <meta name="description" content="{{description}}">
-	  <meta name="og:description" content="{{description}}">
-	  <meta name="twitter:description" content="{{description}}">
-	{{/description}}
 	
-
-	{{#is_player_card}}
-	  <meta name="twitter:card" content="player">
-	  
-	    <meta name="twitter:image" content="player_url">
-	    <meta name="twitter:player" content="image_url">
-		<meta name="twitter:player:width" content="360" />
-        <meta name="twitter:player:height" content="200" />
-      
-	{{/is_player_card}}
-	{{#is_summary_image_card}}
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:image" content="https://{{{HOST_NAME}}}{{{image.src}}}">
-      {{#alt}}
-	  	<meta name="twitter:image.alt" content="https://{{{HOST_NAME}}}{{image.alt}}">
-	  {{/alt}}
-	{{/is_summary_image_card}}
-
-	
-
-	{{#twitter_player_width}}
-	  <meta property="twitter.player.width" content="{{twitter_player_width}}" />
-	{{/twitter_player_width}}
-	{{#twitter_player_height}}
-	  <meta property="twitter.player.height" content="{{twitter_player_height}}" />
-	{{/twitter_player_height}}
-
-	{{#__PROJECT__.name}}
-	  <meta property="twitter:site" content="{{__PROJECT__.name}}" />
-	{{/__PROJECT__.name}}
-
-
-	{{#og_type}}
-	  <meta name="og:type" content="{{og_type}}" />
-	{{/og_type}}
-	
-	{{^og_type}}
-	  <meta name="og:type" content="article" />
-	{{/og_type}}
-
-	<meta name="og:url" content="https://{{{HOST_NAME}}}{{{DOC_PATH}}}">
-	
-	{{#image}}
-	  <meta name="og:image" content="https://{{{HOST_NAME}}}{{{image.src}}}">
-	{{/image}}
-
-	
-	
-{{/metas}}
-
-   
-   
-
+	<title>blogs</title>
+	 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,15 +68,6 @@
 	}
 </style>
 
-<script type="text/javascript">
-//for global variables
-{{#meta_list}}
-	var _meta_{{name}} = "{{value}}";
-{{/meta_list}}
-
-	var _DOC_PATH = "{{{DOC_PATH}}}";
-
-</script>
 
 <script type="text/javascript">
 	function addLineClass (pre) {
