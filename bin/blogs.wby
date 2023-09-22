@@ -39,6 +39,37 @@ for (let i = 0; i < len(articles); i++) {
   let md_result = md.render('/docs/articles/' + article);
   let metas = md.get_metas(md_result);
 
+  let is_player_card = false;
+  let is_summary_card = false;
+  let is_summary_image_card = false;
+
+  let player_url = null;
+  let image_url = null;
+  let video = metas['video'];
+  let image = metas['image];
+  let title = metas['title'];
+  let description = metas['description'];
+
+  if video {
+    is_player_card = true;
+    is_summary_card = false;
+    is_summary_image_card = false;
+
+    let youtubeID = video['youtubeID'];
+    image_url = 'https://img.youtube.com/vi/' + youtubeID + '/0.jpg';
+  } elsif image {
+    is_player_card = false;
+    is_summary_card = false;
+    is_summary_image_card = true;
+    
+    image_url = imge.src;
+  } else {
+    is_player_card = false;
+    is_summary_card = true;
+    is_summary_image_card = false;
+    
+  }
+  
   let card_html = mch.render(tmpCard);
   array.push(cards, card_html);
 }

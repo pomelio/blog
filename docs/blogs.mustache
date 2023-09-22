@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 	
-{{#metas}}
+
 	{{#title}}
 	  <title>{{title}}</title>
 	  <meta name="og:title" content="{{title}}">
@@ -18,22 +18,22 @@
 	{{/description}}
 	
 
-	{{#video}}
+	{{#is_player_card}}
 	  <meta name="twitter:card" content="player">
-	  {{#youtubeID}}
-	    <meta name="twitter:image" content="https://img.youtube.com/vi/{{{youtubeID}}}/0.jpg">
-	    <meta name="twitter:player" content="https://www.youtube.com/embed/{{{youtubeID}}}">
+	  
+	    <meta name="twitter:image" content="player_url">
+	    <meta name="twitter:player" content="image_url">
 		<meta name="twitter:player:width" content="360" />
         <meta name="twitter:player:height" content="200" />
-      {{/youtubeID}}
-	{{/video}}
-	{{^video}}
-		<meta name="twitter:card" content="summary" />
+      
+	{{/is_player_card}}
+	{{#is_summary_image_card}}
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:image" content="https://{{{HOST_NAME}}}{{{image.src}}}">
       {{#alt}}
 	  	<meta name="twitter:image.alt" content="https://{{{HOST_NAME}}}{{image.alt}}">
 	  {{/alt}}
-	{{/video}}
+	{{/is_summary_image_card}}
 
 	
 

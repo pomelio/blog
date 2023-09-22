@@ -8,5 +8,7 @@ id: project_debug
 - After the debugger is started, all subsequent http requests will be intercepted by the debugger. Therefore, after debugging, please close the debugger, otherwise subsequent http requests will always be intercepted by the debugger.
 - The debugger can set breakpoints, step through debugging, inspect variable values, etc.
 
+  ![debug button](/public/images/github_debug_button.png)
+
 
  
