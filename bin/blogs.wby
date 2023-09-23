@@ -5,8 +5,11 @@ import std.array as array;
 import ext.mustache as mch;
 import ext.MarkDownIt as md;
 
-let articles_data = github.get_content('/docs/articles/blogs.txt');
-let articles = string.split(articles_data, '\s+');
+
+
+let project_json_data = github.get_content('/docs/data/project.json');
+let project = parse_json(project_json_data);
+let articles = project.articles;
 
 let {page} = web.query();
 
@@ -75,6 +78,9 @@ for (let i = 0; i < len(articles); i++) {
 }
 
 let articles = array.join(cards, '');
+
+let header = mch.renderTemplate('/docs/header.mustache');
+let footer = mch.renderTemplate('/docs/footer.mustache');
 
 let html = mch.renderTemplate('/docs/blogs.mustache');
 

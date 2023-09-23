@@ -1,3 +1,0 @@
-debug.md
-modules.md
-statements.md

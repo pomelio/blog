@@ -1,0 +1,10 @@
+{
+    "name": "no name",
+    "description": "no description",
+    "image": "/public/images/none-avatar.png",
+    "blogs":[
+        "debug.md",
+        "modules.md",
+        "statements.md"
+    ]
+}
