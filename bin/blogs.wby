@@ -9,7 +9,7 @@ import ext.MarkDownIt as md;
 
 let project_json_data = github.get_content('/docs/data/project.json');
 let project = parse_json(project_json_data);
-let articles = project['articles'];
+let articles = project['blogs'];
 
 let {page} = web.query();
 
@@ -39,7 +39,7 @@ let cards = [];
 for (let i = 0; i < len(articles); i++) {
   let article = articles[i];
 
-  let md_result = md.render('/docs/articles/' + article);
+  let md_result = md.render('/docs/blogs/' + article);
   let metas = md.get_metas(md_result);
 
   let is_player_card = false;
