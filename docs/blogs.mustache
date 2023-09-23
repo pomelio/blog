@@ -99,19 +99,40 @@
 <body class="bg-gray-50 dark:bg-gray-800">
 	{{{header}}}
 
-    <div id="main-content" class="relative w-full h-full overflow-y-auto bg-gray-50 dark:bg-gray-900">
-
-
-			<div class="columns-2 gap-4">
-                {{{articles}}}
-			</div>
-				
-            
-
-
-			{{{footer}}}
-			
+	<div class="px-6 py-8 dark:bg-gray-900">
+            <div class="flex justify-between container mx-auto">
+                <div class="w-full lg:w-8/12">
+                    
+                    <div class="mt-6" v-for="post in posts">
+                        {{{articles}}}
+                    </div>
+                    <div class="mt-8">
+                        <Pagination></Pagination>
+                    </div>
+                </div>
+                <div class="-mx-8 w-4/12 hidden lg:block">
+                    <div class="px-8">
+                        <h1 class="mb-4 text-xl font-bold text-gray-700">Authors</h1>
+                        <users-list></users-list>
+                    </div>
+                    <div class="mt-10 px-8">
+                        <h1 class="mb-4 text-xl font-bold text-gray-700">Categories</h1>
+                        <categories></categories>
+                    </div>
+                    <div class="mt-10 px-8">
+                        <h1 class="mb-4 text-xl font-bold text-gray-700">Recent Post</h1>
+                        <recent-post></recent-post>
+                    </div>
+                </div>
+            </div>
         </div>
+
+    
+
+
+		{{{footer}}}
+			
+        
 		
 
     

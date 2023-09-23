@@ -6,26 +6,11 @@
         </svg>
       </span>
     {{/is_player_card}}
-
-
-<div class="max-w-4xl px-10 py-6 bg-white rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-      {{#is_player_card}}
-      <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{{image_url}}}" alt="{{title}}">
-      <span class="absolute -top-2 -right-2"><svg class=" w-[24px] h-[26px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 16">
-          <path d="M0 .984v14.032a1 1 0 0 0 1.506.845l12.006-7.016a.974.974 0 0 0 0-1.69L1.506.139A1 1 0 0 0 0 .984Z"/>
-        </svg>
-      </span>
-    {{/is_player_card}}
     {{#is_summary_image_card}}
       <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{{image_url}}}" alt="{{title}}">
     {{/is_summary_image_card}}
-        <div class="mt-2">
-            <a class="text-2xl text-gray-700 font-bold hover:underline" href="#">{{ title }}</a>
-            <p class="mt-2 text-gray-600">{{ description }}</p>
-        </div>
-        <div class="flex justify-between items-center mt-4">
-            <a class="text-blue-500 hover:underline" href="#">Read more</a>
-            
-        </div>
-  </div>
-
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{title}}</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{description}}</p>
+    </div>
+</a>
