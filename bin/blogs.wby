@@ -9,7 +9,7 @@ import ext.MarkDownIt as md;
 
 let project_json_data = github.get_content('/docs/data/project.json');
 let project = parse_json(project_json_data);
-let articles = project.articles;
+let articles = project['articles'];
 
 let {page} = web.query();
 
