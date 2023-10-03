@@ -32,6 +32,4 @@ if web.match('/blog/:id') {
   dispatch('/get_comment', {});
 } else {
   web.set_status(404);
-} else {
-  web.set_status(404);
 }
