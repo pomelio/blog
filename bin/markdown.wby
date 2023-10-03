@@ -1,0 +1,92 @@
+import ext.web as web;
+import ext.MarkDownIt as md;
+import std.string as str;
+import ext.mustache as mch;
+import ext.github as github;
+import std.array as arr;
+import std.date as dt;
+
+let ppath = web.path();
+if ppath == '/' {
+  ppath = '/docs/start.md';
+}
+
+let side_bar_data = github.get_content('/docs/side_bar.json');
+
+let side_bar_json = parse_json(side_bar_data);
+
+let sections = side_bar_json['sections'];
+
+let section_html_list = [];
+let tmplSection = mch.init('/docs/sidebar_section.mustache');
+
+for (let i = 0; i < len(sections); i++) {
+  let section = sections[i];
+  
+  let topics = section['topics'];
+  topics = arr.map(topics, |t|=>{
+    
+    return {...t, active: t['md'] == ppath};
+  });
+  
+  let title = section['title'];
+  let section_html = mch.render(tmplSection);
+  arr.push(section_html_list, section_html);
+}
+
+let title = side_bar_json['title'];
+let sections_html = arr.join(section_html_list, '');
+
+let side_bar_html = mch.renderTemplate('/docs/sidebar.mustache');
+
+let project_json = github.get_content('/docs/data/project.json');
+let project = parse_json(project_json);
+
+let header = mch.renderTemplate('/docs/header.mustache');
+let footer = mch.renderTemplate('/docs/footer.mustache');
+
+
+let PAGE_IDENTIFIER = ppath;
+
+let DOC_PATH = ppath;
+let HOST_NAME = web.hostname();
+
+let comments = [];
+
+let comments_json = github.get_content('/docs/data/comment.json');
+if comments_json != undefined {
+  comments = parse_json(comments_json);
+}
+
+comments = arr.filter(comments, |c| => c['doc'] == DOC_PATH);
+
+let user_info_docs_path = '/docs/data/user_info.json';
+let user_info_docs = [];
+
+let user_info_docs_json = github.get_content(user_info_docs_path);
+if user_info_docs_json != undefined {
+  user_info_docs = parse_json(user_info_docs_json);
+}
+
+let comments_html = [];
+
+let tmplComment = mch.init('/docs/comment.mustache');
+
+for (let i = 0; i < len(comments); i++) {
+  let comment = comments[i];
+  comment['value'] = md.render_source(comment['value']);
+  let comment_time = dt.from_now(dt.from_number(comment['create_time']));
+  let user = arr.find(user_info_docs, |u| => u['id'] == comment['user_id']);
+  let comment_html = mch.render(tmplComment);
+  arr.push(comments_html, comment_html);
+}
+
+comments_html = arr.join(comments_html, '');
+
+let md_result = md.render(ppath);
+let content = md.get_html(md_result);
+let metas = md.get_metas(md_result);
+
+let html = mch.renderTemplate('/docs/layout.mustache');
+
+web.body(html);

@@ -9,7 +9,7 @@ import ext.MarkDownIt as md;
 
 let project_json_data = github.get_content('/docs/data/project.json');
 let project = parse_json(project_json_data);
-let articles = project['blogs'];
+let blogs = project['blogs'];
 
 let {page} = web.query();
 
@@ -21,25 +21,25 @@ if !page {
 
 let HOST_NAME = web.hostname();
 
-let articles_count = len(articles);
+let blogs_count = len(blogs);
 let offset = page * PAGE_COUNT;
 
 let end = offset + PAGE_COUNT;
 
-if end > articles_count {
-    end = articles_count;
+if end > blogs_count {
+    end = blogs_count;
 }
 
-articles = array.slice(articles, offset, end);
+blogs = array.slice(blogs, offset, end);
 
-let tmpCard = mch.init('/docs/article_card.mustache');
+let tmpCard = mch.init('/docs/blog_card.mustache');
 
 let cards = [];
 
-for (let i = 0; i < len(articles); i++) {
-  let article = articles[i];
+for (let i = 0; i < len(blogs); i++) {
+  let blog = blogs[i];
 
-  let md_result = md.render('/docs/blogs/' + article);
+  let md_result = md.render('/docs/blogs/' + blog);
   let metas = md.get_metas(md_result);
 
   let is_player_card = false;
@@ -77,7 +77,7 @@ for (let i = 0; i < len(articles); i++) {
   array.push(cards, card_html);
 }
 
-let articles = array.join(cards, '');
+let blogs = array.join(cards, '');
 
 let header = mch.renderTemplate('/docs/header.mustache');
 let footer = mch.renderTemplate('/docs/footer.mustache');
