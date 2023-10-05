@@ -16,6 +16,12 @@ $(document).ready(
         $('#top-header .user-panel').replaceWith(html);
         $('#side-header .user-panel').replaceWith(html);
 
+        $(".user-panel button").click((e) => {
+            e.preventDefault();
+            $(".user-panel .dropdown-menu").toggleClass('hidden');
+            
+        });
+
 
         $(".logout").click((e) => {
             e.preventDefault();
