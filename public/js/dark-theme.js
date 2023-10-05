@@ -27,10 +27,10 @@ $(document).ready(
         var currentTheme = localStorage.getItem('color-theme');
 
         if (currentTheme === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            $(document).addClass('dark');
+            $(':root').addClass('dark');
             darkMode = 'dark';
         } else {
-            $(document).remove('dark');
+            $(':root').remove('dark');
             darkMode = 'light';
         }
     
@@ -56,23 +56,23 @@ $(document).ready(
             // if set via local storage previously
             if (currentTheme) {
                 if (currentTheme === 'light') {
-                    $(document).addClass('dark');
+                    $(':root').addClass('dark');
                     localStorage.setItem('color-theme', 'dark');
                     darkMode = 'dark';
                 } else {
-                    $(document).removeClass('dark');
+                    $(':root').removeClass('dark');
                     localStorage.setItem('color-theme', 'light');
                     darkMode = 'light';
                 }
     
                 // if NOT set via local storage previously
             } else {
-                if ($(document).hasClass('dark')) {
-                    $(document).removeClass('dark');
+                if ($(':root').hasClass('dark')) {
+                    $(':root').removeClass('dark');
                     localStorage.setItem('color-theme', 'light');
                     darkMode = 'light';
                 } else {
-                    $(document).addClass('dark');
+                    $(':root').addClass('dark');
                     localStorage.setItem('color-theme', 'dark');
                     darkMode = 'dark';
                 }
