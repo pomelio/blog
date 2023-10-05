@@ -1,0 +1,27 @@
+import ext.web as web;
+import ext.github as github;
+import std.array as arr;
+import ext.jwt as jwt;
+import std.date as date;
+
+
+let token = jwt.verify();
+
+let user_id = token['id'];
+
+let project_json_path = '/docs/data/project.json';
+let project_json_data = github.get_content(project_json_path);
+let project = parse_json(project_json_data);
+let followers = project.followers || [];
+
+let fidx = followers.find(|u| => u['id'] == user_id);
+
+if fidx != -1 {
+  followers = arr.splice(followers, fidx, 1);
+} else {
+  arr.unshift(followers, user_id);
+}
+
+github.save_text(project_json_path, stringify_json(project));
+
+web.body(followers);

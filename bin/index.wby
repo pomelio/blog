@@ -30,6 +30,8 @@ if web.match('/blog/:id') {
   dispatch('/comment/remove', {});
 } elsif method == 'GET' &&  web.match('/comment/:id') {
   dispatch('/comment/get', {});
+} elsif method == 'GET' &&  web.match('/follower/toggle') {
+  dispatch('/follower/toggle', {});
 } else {
   web.set_status(404);
 }
