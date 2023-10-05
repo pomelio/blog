@@ -5,7 +5,7 @@ import ext.github as github;
 let project_json = github.get_content('/docs/data/project.json');
 let project = parse_json(project_json);
 
-let header = mch.renderTemplate('/docs/header.mustache');
+let header = mch.renderTemplate('/docs/header_simple.mustache');
 let footer = mch.renderTemplate('/docs/footer.mustache');
 
 let html = mch.renderTemplate('/docs/login.mustache');
