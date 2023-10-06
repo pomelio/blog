@@ -17,12 +17,12 @@ if !followers {
 
 let followers_count = len(followers);
 let followers_slice_len = followers_count > 20 ? 20 : followers_count;
-followers = arr.slice(followers, 0,  followers_slice_len);
+followers = array.slice(followers, 0,  followers_slice_len);
 
 let user_info_json = github.get_content('/docs/data/user_info.json');
 let user_info_list = parse_json(user_info_json);
 
-let follower_list = arr.filter(user_info_list, |u| => followers.includes(u['id']));
+let follower_list = array.filter(user_info_list, |u| => followers.includes(u['id']));
 let followers_html = mch.renderTemplate('/docs/blogs_followers.mustache');
 
 
