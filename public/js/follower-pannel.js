@@ -29,7 +29,8 @@ $(document).on('my-account', (event, account) => {
 
 
     let html = renderHTML();
-    $(component_id).replaceWith(html);
+    $('#top-header .follower-toggle').replaceWith(html);
+    $('#side-header .follower-toggle').replaceWith(html);
 
     $(".follower-toggle").on("click", event => {
         event.preventDefault();
