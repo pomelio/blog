@@ -24,7 +24,7 @@ if fidx != -1 {
 } else {
   arr.unshift(followers, user_id);
 }
-
+project['followers'] = followers;
 github.save_text(project_json_path, stringify_json(project));
 
 web.body(followers);
