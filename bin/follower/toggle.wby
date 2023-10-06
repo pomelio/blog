@@ -12,7 +12,10 @@ let user_id = token['id'];
 let project_json_path = '/docs/data/project.json';
 let project_json_data = github.get_content(project_json_path);
 let project = parse_json(project_json_data);
-let followers = project['followers'] || [];
+let followers = project['followers'];
+if !followers {
+  followers = [];
+}
 
 let fidx = followers.find(|u| => u['id'] == user_id);
 
