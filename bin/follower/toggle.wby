@@ -17,7 +17,7 @@ if !followers {
   followers = [];
 }
 
-let fidx = followers.find(|u| => u['id'] == user_id);
+let fidx = arr.find(followers, |u| => u['id'] == user_id);
 
 if fidx != -1 {
   followers = arr.splice(followers, fidx, 1);
