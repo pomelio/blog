@@ -36,32 +36,32 @@ $(document).on('my-account', (event, account) => {
         event.preventDefault();
         
        
-        if (comment) {
-            let data = {
-            };
+    
+        let data = {
+        };
 
-            let headers = {
-                'Content-Type': 'application/json;charset=UTF-8',
-                'Authorization': 'Bearer ' + account.token,
-            };
-            
-            loading(true);
-            axios({
-                method: 'GET',
-                url: '/follower/toggle',
-                data,
-                headers,
-            }).then(result => {
-                //addNewComment(creq);
-                setTimeout(function(){
-                    loading(false);
-                    window.location.reload(true);
-                }, 2000);
-                
-            }).catch(err => {
+        let headers = {
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Authorization': 'Bearer ' + account.token,
+        };
+        
+        loading(true);
+        axios({
+            method: 'GET',
+            url: '/follower/toggle',
+            data,
+            headers,
+        }).then(result => {
+            //addNewComment(creq);
+            setTimeout(function(){
                 loading(false);
-            });
-        }
+                window.location.reload(true);
+            }, 2000);
+            
+        }).catch(err => {
+            loading(false);
+        });
+        
     });
 
     
