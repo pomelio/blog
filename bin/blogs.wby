@@ -16,7 +16,8 @@ if !followers {
 }
 
 let followers_count = len(followers);
-followers = arr.slice(followers, 0,  followers_count > 20 ? 20 : followers_count);
+let followers_slice_len = followers_count > 20 ? 20 : followers_count;
+followers = arr.slice(followers, 0,  followers_slice_len);
 
 let user_info_json = github.get_content('/docs/data/user_info.json');
 let user_info_list = parse_json(user_info_json);
