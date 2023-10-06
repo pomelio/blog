@@ -71,6 +71,10 @@
 
 
 <script type="text/javascript">
+var project_json = `{{{project_json}}}`;
+var project = JSON.parse(project_json);
+
+
 	function addLineClass (pre) {
 		var lines = pre.innerText.trim().split("\n"); // can use innerHTML also
 		while(pre.childNodes.length > 0) {
