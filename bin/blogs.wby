@@ -9,6 +9,22 @@ import ext.MarkDownIt as md;
 
 let project_json = github.get_content('/docs/data/project.json');
 let project = parse_json(project_json);
+
+let followers = project['followers'];
+if !followers {
+  followers = [];
+}
+
+let followers_count = len(followers);
+followers = arr.slice(followers, 0,  followers_count > 20 ? 20 : followers_count);
+
+let user_info_json = github.get_content('/docs/data/user_info.json');
+let user_info_list = parse_json(user_info_json);
+
+let follower_list = arr.filter(user_info_list, |u| => followers.includes(u['id']));
+let followers_html = mch.renderTemplate('/docs/blogs_followers.mustache');
+
+
 let blogs = project['blogs'];
 
 let {page} = web.query();
@@ -77,10 +93,10 @@ for (let i = 0; i < len(blogs); i++) {
   array.push(cards, card_html);
 }
 
-let blogs = array.join(cards, '');
+let blogs_html = array.join(cards, '');
 
-let header = mch.renderTemplate('/docs/header.mustache');
-let footer = mch.renderTemplate('/docs/footer.mustache');
+let header_html = mch.renderTemplate('/docs/header.mustache');
+let footer_html = mch.renderTemplate('/docs/footer.mustache');
 
 let html = mch.renderTemplate('/docs/blogs.mustache');
 

@@ -105,7 +105,7 @@ project.followers = followers;
 
 <body class="bg-gray-50 dark:bg-gray-800">
 	<div id="top-header" class="md:hidden">
-	{{{header}}}
+	{{{header_html}}}
 	</div>
 
     <div id="loading" class="hidden text-center">
@@ -137,7 +137,7 @@ function loading(flag) {
                 
                 <div class="md:col-span-2">
 					<div class="mt-8 grid lg:grid-cols-2 gap-10">
-						{{{blogs}}}
+						{{{blogs_html}}}
 					</div>
 					
 					
@@ -153,7 +153,7 @@ function loading(flag) {
 					</div>
 					<div class="px-8">
 						<h1 class="mb-4 text-xl font-bold text-gray-700 dark:text-gray-400">Friends</h1>
-						{{{user_list}}}
+						{{{followers_html}}}
 					</div>
 					<div class="mt-10 px-8">
 						<h1 class="mb-4 text-xl font-bold text-gray-700 dark:text-gray-400">Blogs</h1>
@@ -166,7 +166,7 @@ function loading(flag) {
             </div>
         </div>
 
-		{{{footer}}}
+		{{{footer_html}}}
     <!-- Place this tag in your head or just before your close body tag. -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
